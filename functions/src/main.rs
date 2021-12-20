@@ -1,5 +1,6 @@
 fn main() {
-    println!("Hello, world!");
+    // println!("Hello, world!");
+    // println!("{}", fibonacci(6));
 
     // println!("{}", sum(3,3));
     // println!("{}", five());
@@ -10,6 +11,9 @@ fn main() {
 
     // println!("The condition evals to {}", number);
 
+    // twelve_days_of_christmas();
+
+    println!("{}", fahrenheit_to_celsius(98.6))
 }
 
 //rust does not require explicit return statements. usually, the last line in a function is the returned value
@@ -97,4 +101,58 @@ fn liftoff() {
         println!("{}!", number);
     }
     println!("LIFTOFF :) !!!")
+}
+
+fn fibonacci(n: i32) -> i32 {
+    let mut counter = 1;
+    let mut sum = 0;
+    let mut prevsum1 = 1;
+    let mut prevsum2 = 0;
+    
+    if (n<=2){
+        return 1;
+    }
+
+    while counter < n {
+        sum = prevsum1 + prevsum2;
+        prevsum2 = prevsum1;
+        prevsum1 = sum;
+        counter+=1;
+    }
+    
+
+    return sum;
+}
+
+fn twelve_days_of_christmas(){
+    let lyrics = ["A partridge in a pear tree", "Two turtle doves, and", "Three french hens", "Four calling birds", "Five golden rings", "Six geese a-laying", "Seven swans a-swimming", "Eight maids a-milking", "Nine ladies dancing", "Ten lords a-leaping", "Eleven pipers piping", "Twelve drummers drumming"];
+
+    for num in (1..13){
+        print!("On the {}", num);
+        day_ending(num);
+
+        let counter  :usize = num.try_into().unwrap();
+        for number in (1..counter+1).rev(){
+            println!("{}", lyrics[number-1]);
+        }
+    }
+}
+
+fn day_ending(num: i32){
+    if(num==1){
+        print!("st day of christmas my true love gave to me\n");
+    }
+    else if (num==2){
+        print!("nd day of christmas my true love gave to me\n");
+    }
+    else if (num==3){
+        print!("rd day of christmas my true love gave to me\n");
+    }
+    else {
+        print!("th day of christmas my true love gave to me\n");
+    }
+}
+
+fn fahrenheit_to_celsius(fahrenheit:f32) -> f32{
+    return (fahrenheit-32.0)/1.8;
 }
