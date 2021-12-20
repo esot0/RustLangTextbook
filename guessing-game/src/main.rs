@@ -10,7 +10,7 @@ fn main() {
     println!("Guess the number!");
 
     let secret_number = rand::thread_rng().gen_range(1..101);
-    
+
     loop {
     println!("Please input your guess.");
 
@@ -27,7 +27,6 @@ fn main() {
 
     //The underscore in Err is a catch all val. Essentially, we wanna ignore any and all errors and continue the game at this point 
     /*
-    using guess again saves us from having to create a new variable. 
     the :u32 denotes what type we want the variable to be: an unsigned 32 bit integer
     trim removes the newline character from the input, parse converts a string into an int
     */
